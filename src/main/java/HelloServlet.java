@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @Slf4j
-@WebServlet(name = "ProductsServlet", urlPatterns = "/products")
-public class ProductsServlet extends HttpServlet {
+@WebServlet(name = "HelloServlet", urlPatterns = "/hello")
+public class HelloServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
@@ -26,12 +26,6 @@ public class ProductsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        ArrayList<Product> products = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            products.add(new Product(i, String.format("Яблоко%s", i), i * 5));
-        }
-
-        req.setAttribute("products", products);
-        getServletContext().getRequestDispatcher("/products.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }
